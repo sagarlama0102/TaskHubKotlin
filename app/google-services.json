@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "544750288301",
+    "firebase_url": "https://final-task-manager-dc82b-default-rtdb.firebaseio.com",
+    "project_id": "final-task-manager-dc82b",
+    "storage_bucket": "final-task-manager-dc82b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544750288301:android:1a22f8002bc15d0e863524",
+        "android_client_info": {
+          "package_name": "com.example.finaltaskmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdh6j2c643K1qq48NXXCq6_JiFCCtXWDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FinalTaskManager</string>
+
+    <!-- Task Fragment Strings -->
+    <string name="task_name_hint">Task Name</string>
+    <string name="task_description_hint">Task Description</string>
+    <string name="select_priority">Select Priority</string>
+    <string name="select_due_date">Select Due Date</string>
+    <string name="no_due_date_selected">No due date selected</string>
+    <string name="add_task_button">Add Task</string>
+
+    <!-- Priority Levels -->
+    <string-array name="priority_levels">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+
+    <!-- Date Format -->
+    <string name="date_format">MM/dd/yyyy</string>
+
+    <!-- Other Strings -->
+    <string name="task_added_successfully">Task added successfully!</string>
+    <string name="error_task_name_empty">Task name cannot be empty</string>
+    <string name="error_task_description_empty">Task description cannot be empty</string>
+</resources>
