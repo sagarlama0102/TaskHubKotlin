@@ -13,7 +13,7 @@ class UserViewModel (val userRepository: UserRepository){
     fun addUserToDatabase(userId: String, userModel: UserModel, callback: (Boolean, String) -> Unit){
         userRepository.addUserToDatabase(userId, userModel,callback)
     }
-    fun forgotPassword(email: String, password: String, callback: (Boolean, String) -> Unit){
+    fun forgotPassword(email: String, callback: (Boolean, String) -> Unit){
         userRepository.forgotPassword(email,callback)
     }fun getCurrentUser(email: String, password: String, callback: (Boolean, String) -> Unit){
         userRepository.getCurrentUser()

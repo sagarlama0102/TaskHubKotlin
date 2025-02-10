@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.AddProjectActivity">
+
+    <!-- Header Text -->
+    <TextView
+        android:id="@+id/createProjectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Your Project here"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="26sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/instructionProjectText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="With only few steps create your new task for better organization."
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="14sp"
+        android:textColor="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/createProjectText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        android:lineSpacingExtra="4dp" />
+
+    <EditText
+        android:id="@+id/ProjectNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:hint="Project Title"
+        android:textSize="16sp"
+        android:padding="14dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/instructionProjectText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+    <Spinner
+        android:id="@+id/ProjectPrioritySpinner"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_spinner"
+        android:backgroundTint="@color/green"
+        android:entries="@array/priority_levels"
+        android:fontFamily="@font/poppinsregular"
+        android:padding="14dp"
+        android:prompt="@string/select_priority"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProjectNameEditText" />
+
+    <Button
+        android:id="@+id/selectProjectDateButton"
+        android:layout_width="180dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/green"
+        android:drawableEnd="@drawable/baseline_calendar_month_24"
+        android:drawablePadding="0dp"
+        android:drawableTint="@color/white"
+        android:elevation="3dp"
+        android:text="Due Date"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ProjectNameEditText" />
+
+    <EditText
+        android:id="@+id/ProjectDescriptionEditText"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:hint="Project Description"
+        android:textSize="16sp"
+        android:padding="14dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/selectProjectDateButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Add Task Button -->
+    <Button
+        android:id="@+id/addProjectButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add Now"
+        android:textSize="16sp"
+        android:padding="20dp"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
+        app:cornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/ProjectDescriptionEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

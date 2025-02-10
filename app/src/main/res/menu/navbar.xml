@@ -5,16 +5,9 @@
 
         android:icon="@drawable/baseline_home_24"/>
     <item
-        android:title="Task"
-        android:id="@+id/task"
-
-        android:icon="@drawable/baseline_assignment_24"
-        />
-    <item
-        android:id="@+id/progress"
-        android:title="Bar"
-
-        android:icon="@drawable/baseline_bar_chart_24"/>
+        android:title="Meetings"
+        android:id="@+id/meeting"
+        android:icon="@drawable/baseline_dashboard_customize_24"/>
     <item
         android:id="@+id/profile"
 

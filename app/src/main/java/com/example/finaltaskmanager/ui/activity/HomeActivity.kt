@@ -12,44 +12,44 @@ import com.example.finaltaskmanager.R
 import com.example.finaltaskmanager.databinding.ActivityHome2Binding
 
 import com.example.finaltaskmanager.ui.fragment.HomeFragment
+import com.example.finaltaskmanager.ui.fragment.ProjectsFragment
 import com.example.finaltaskmanager.ui.fragment.ProfileFragment
-import com.example.finaltaskmanager.ui.fragment.ProgressFragment
-import com.example.finaltaskmanager.ui.fragment.TaskFragment
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHome2Binding
 
     private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val fragmentManager: FragmentManager=supportFragmentManager
+        val fragmentTransaction: FragmentTransaction=fragmentManager.beginTransaction()
 
-        fragmentTransaction.replace(R.id.framelayoutnav, fragment)
+        fragmentTransaction.replace(R.id.framelayoutnav,fragment)
         fragmentTransaction.commit()
+
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityHome2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        enableEdgeToEdge()
 
+
+        // Replace the initial fragment with HomeFragment
         replaceFragment(HomeFragment())
 
-        binding = ActivityHome2Binding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         binding.bottomNavigationView.setOnItemSelectedListener {
-
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.task -> replaceFragment(TaskFragment())
-                R.id.progress -> replaceFragment(ProgressFragment())
+                R.id.meeting -> replaceFragment(ProjectsFragment())
                 R.id.profile -> replaceFragment(ProfileFragment())
                 else -> {}
             }
             true
-
         }
+
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -57,4 +57,7 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
     }
+
+
+
 }

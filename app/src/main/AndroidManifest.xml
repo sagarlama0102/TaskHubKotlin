@@ -13,18 +13,14 @@
         android:theme="@style/Theme.FinalTaskManager"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.ForgetActivity"
+            android:name=".ui.activity.UpdateProjectActivity"
             android:exported="false" />
-
         <activity
-            android:name=".ui.activity.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".ui.activity.UpdateProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.AddProjectActivity"
+            android:exported="false" /> <!-- SplashActivity is the only launcher activity -->
         <activity
             android:name=".ui.activity.SplashActivity"
             android:exported="true">
@@ -33,35 +29,28 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Other activities without the LAUNCHER intent filter -->
+        <activity
+            android:name=".ui.activity.UpdateTaskActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.AddTaskActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activity.ForgetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.HomeActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.activity.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".ui.activity.RegisterActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
