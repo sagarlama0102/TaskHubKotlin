@@ -23,7 +23,6 @@ class TaskAdapter(
             val taskDate : TextView = itemView.findViewById(R.id.date)
             val taskDescription : TextView = itemView.findViewById(R.id.desc)
 
-
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
@@ -43,7 +42,7 @@ class TaskAdapter(
         holder.update.setOnClickListener(){
             val intent = Intent(context, UpdateTaskActivity::class.java)
 
-            intent.putExtra("taskId", data[position])
+            intent.putExtra("taskId", data[position].taskId)
 
             context.startActivity(intent)
         }

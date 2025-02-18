@@ -15,4 +15,10 @@ interface UserRepository {
 
     fun getCurrentUser(): FirebaseUser?
 
+    // extra code for getting user credentials
+
+    fun getUserData(userId: String, callback: (UserModel?) -> Unit)
+
+    fun updateUserData(userId: String, userModel: UserModel, callback: (Boolean, String) -> Unit)
+
 }

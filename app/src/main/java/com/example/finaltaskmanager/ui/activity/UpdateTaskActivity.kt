@@ -25,7 +25,7 @@ class UpdateTaskActivity : AppCompatActivity() {
         var repo = TaskRepositoryImpl()
         taskViewModel = TaskViewModel(repo)
 
-        var taskId = intent.getStringExtra("taskId").toString()
+        var taskId: String= intent.getStringExtra("taskId").toString()
 
         taskViewModel.getTaskById(taskId)
 
@@ -43,13 +43,11 @@ class UpdateTaskActivity : AppCompatActivity() {
             }
             binding.updatetaskPrioritySpinner.setSelection(taskLevel)
 
-
-
         }
         val priorityLevels = arrayOf("High", "Medium", "Low")
         val spinnerAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_spinner_item, priorityLevels)
-
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
         binding.updatetaskPrioritySpinner.adapter = spinnerAdapter
 
         // Handle Date Picker dialog
@@ -71,18 +69,23 @@ class UpdateTaskActivity : AppCompatActivity() {
 
         binding.updateaddTaskButton.setOnClickListener(){
             var taskname = binding.updatetaskNameEditText.text.toString()
-            var tasklevel = binding.updatetaskPrioritySpinner.selectedItemPosition
+            var taskLevel = priorityLevels[binding.updatetaskPrioritySpinner.selectedItemPosition]
             var taskdate = binding.updateselectDateButton.text.toString()
             var taskdescription = binding.updatetaskDescriptionEditText.text.toString()
 
+            if (taskname.isEmpty() || taskdate.isEmpty() || taskdescription.isEmpty()) {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             var updatedMap = mutableMapOf<String, Any>()
             updatedMap["taskTitle"] = taskname
-            updatedMap["tasklevel"] = tasklevel
+            updatedMap["tasklevel"] = taskLevel
             updatedMap["taskDate"] = taskdate
             updatedMap["taskDescription"] = taskdescription
 
             taskViewModel.updateTask(taskId, updatedMap){
-                success, message ->
+                    success, message ->
                 if(success){
                     Toast.makeText(this@UpdateTaskActivity,message,Toast.LENGTH_SHORT).show()
                     finish()
@@ -100,4 +103,6 @@ class UpdateTaskActivity : AppCompatActivity() {
             insets
         }
     }
+
 }
+

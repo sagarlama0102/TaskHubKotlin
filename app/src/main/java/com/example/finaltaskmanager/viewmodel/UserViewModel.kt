@@ -19,4 +19,13 @@ class UserViewModel (val userRepository: UserRepository){
         userRepository.getCurrentUser()
     }
 
+    //fetch user data
+    fun getUserData(userId: String, callback: (UserModel?) -> Unit) {
+        userRepository.getUserData(userId, callback)
+    }
+
+    fun updateUserData(userId: String, userModel: UserModel, callback: (Boolean, String) -> Unit) {
+        userRepository.updateUserData(userId, userModel, callback)
+    }
+
 }

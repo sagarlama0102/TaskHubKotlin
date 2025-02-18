@@ -38,7 +38,6 @@ class ProjectRepositoryImpl: ProjectRepository  {
             }
         }
 
-
     }
 
     override fun deleteProject(projectId: String, callback: (Boolean, String) -> Unit) {

@@ -40,7 +40,7 @@ class ProjectAdapter(
 
         holder.update.setOnClickListener(){
             val intent = Intent(context, UpdateProjectActivity::class.java)
-            intent.putExtra("projectId", data[position])
+            intent.putExtra("projectId", data[position].projectId)
             context.startActivity(intent)
         }
     }

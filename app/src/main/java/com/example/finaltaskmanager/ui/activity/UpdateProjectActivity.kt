@@ -40,13 +40,12 @@ class UpdateProjectActivity : AppCompatActivity() {
                 "Medium" -> 1
                 "Low" -> 2
                 else -> 0
-
             }
             binding.updateProjectPrioritySpinner.setSelection(projectlevel)
+
         }
         val prioritylevel= arrayOf("High", "Medium", "Low")
         val spinnerAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_spinner_item, prioritylevel)
-
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.updateProjectPrioritySpinner.adapter = spinnerAdapter
 
@@ -67,9 +66,10 @@ class UpdateProjectActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+
         binding.updateaddProjectButton.setOnClickListener(){
             var projectname = binding.updateProjectNameEditText.text.toString()
-            var projectlevel = binding.updateProjectPrioritySpinner.selectedItemPosition
+            var projectlevel = prioritylevel[binding.updateProjectPrioritySpinner.selectedItemPosition]
             var projectdate = binding.updateProjectselectDateButton.text.toString()
             var projectdesc = binding.updateProjectDescriptionEditText.text.toString()
 
@@ -90,7 +90,6 @@ class UpdateProjectActivity : AppCompatActivity() {
             }
 
         }
-
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

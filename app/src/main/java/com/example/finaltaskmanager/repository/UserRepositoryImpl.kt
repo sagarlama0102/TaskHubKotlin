@@ -63,5 +63,25 @@ class UserRepositoryImpl :UserRepository{
     override fun getCurrentUser(): FirebaseUser? {
         return auth.currentUser
     }
+//extra code for gettting currently logged in user credentials
+    override fun getUserData(userId: String, callback: (UserModel?) -> Unit) {
+        ref.child(userId).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val userModel = task.result?.getValue(UserModel::class.java)
+                callback(userModel)
+            } else {
+                callback(null)
+            }
+        }
+    }
+    override fun updateUserData(userId: String, userModel: UserModel, callback: (Boolean, String) -> Unit) {
+        ref.child(userId).setValue(userModel).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                callback(true, "User data updated successfully")
+            } else {
+                callback(false, task.exception?.message.toString())
+            }
+        }
+    }
 
 }
