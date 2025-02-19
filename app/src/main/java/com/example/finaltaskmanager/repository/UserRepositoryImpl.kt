@@ -83,5 +83,11 @@ class UserRepositoryImpl :UserRepository{
             }
         }
     }
+    override fun updateUserEmail(newEmail: String, callback: (Boolean) -> Unit) {
+        val user = auth.currentUser
+        user?.updateEmail(newEmail)?.addOnCompleteListener { task ->
+            callback(task.isSuccessful)
+        }
+    }
 
 }

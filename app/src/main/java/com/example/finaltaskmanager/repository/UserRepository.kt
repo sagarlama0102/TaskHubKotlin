@@ -21,4 +21,6 @@ interface UserRepository {
 
     fun updateUserData(userId: String, userModel: UserModel, callback: (Boolean, String) -> Unit)
 
+    fun updateUserEmail(newEmail: String, callback: (Boolean) -> Unit)
+
 }
