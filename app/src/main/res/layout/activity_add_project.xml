@@ -15,7 +15,6 @@
         android:text="Create Your Project here"
         android:fontFamily="@font/poppinsbold"
         android:textSize="26sp"
-        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

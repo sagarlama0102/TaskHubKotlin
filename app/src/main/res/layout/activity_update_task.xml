@@ -17,7 +17,7 @@
         android:text="Update Your Task"
         android:textSize="26sp"
         android:fontFamily="@font/poppinsbold"
-        android:textColor="@color/white"
+
         android:textStyle="bold"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"

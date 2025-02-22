@@ -17,10 +17,8 @@ class ProfileFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userRepository: UserRepositoryImpl
-
     private lateinit var currentEmailTextView: TextView
-    private lateinit var newEmailEditText: EditText
-    private lateinit var saveChangesButton: Button
+    private lateinit var currentUsernameTextView: TextView
     private lateinit var logoutCardView: CardView
 
     override fun onCreateView(
@@ -35,41 +33,38 @@ class ProfileFragment : Fragment() {
 
         // Bind UI components from the XML
         currentEmailTextView = view.findViewById(R.id.currentEmailTextView)
-        newEmailEditText = view.findViewById(R.id.newEmail)
-        saveChangesButton = view.findViewById(R.id.saveChangesButton)
+        currentUsernameTextView = view.findViewById(R.id.currentUsernameTextView)
+
         logoutCardView = view.findViewById(R.id.logout)
 
-        // Display the currently logged in user's email directly from FirebaseAuth
+        // Display the currently logged in user's email and username directly from FirebaseAuth and Database
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            currentEmailTextView.text = "Current Email: ${currentUser.email}"
+            currentEmailTextView.text = "Email : ${currentUser.email}"
+            userRepository.getUserData(currentUser.uid) { userModel ->
+                if (userModel != null) {
+                    currentUsernameTextView.text = "Username : ${userModel.username}"
+                } else {
+                    currentUsernameTextView.text = "Current Username: N/A"
+                }
+            }
         } else {
             currentEmailTextView.text = "Not logged in"
-        }
-
-        // Set click listener for saving changes (update email)
-        saveChangesButton.setOnClickListener {
-            val newEmail = newEmailEditText.text.toString().trim()
-            if (newEmail.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter a new email", Toast.LENGTH_SHORT).show()
-            } else {
-                updateCredentials(newEmail)
-            }
+            currentUsernameTextView.text = "Username : N/A"
         }
 
         // Set click listener for logout
         logoutCardView.setOnClickListener {
             logout()
         }
-
         return view
     }
 
     /**
-     * Updates the user's email in Firebase Auth and then updates the corresponding
+     * Updates the user's email and username in Firebase Auth and then updates the corresponding
      * record in the Firebase Realtime Database.
      */
-    private fun updateCredentials(newEmail: String) {
+    private fun updateCredentials(newEmail: String, newUsername: String) {
         val user = auth.currentUser
         if (user == null) {
             Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
@@ -84,19 +79,23 @@ class ProfileFragment : Fragment() {
                     // Update UI to reflect the new email
                     currentEmailTextView.text = "Current Email: $newEmail"
 
-                    // Optionally update email in your Firebase Realtime Database record
+                    // Update username and email in Firebase Realtime Database
                     userRepository.getUserData(user.uid) { userModel ->
                         if (userModel != null) {
                             userModel.email = newEmail
+                            userModel.username = newUsername
                             userRepository.updateUserData(user.uid, userModel) { success, message ->
-                                if (!success) {
+                                if (success) {
+                                    Toast.makeText(requireContext(), "User data updated successfully", Toast.LENGTH_SHORT).show()
+                                    currentUsernameTextView.text = "Current Username: $newUsername"
+                                } else {
                                     Toast.makeText(requireContext(), "DB update failed: $message", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }
                     }
                 } else {
-                    Toast.makeText(requireContext(), "Failed to update email", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Failed to update email: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
